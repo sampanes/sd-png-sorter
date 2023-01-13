@@ -20,7 +20,6 @@
             color: var(--title-txt-color);
             font-size: 2.2em;
             text-decoration: none;
-            font-family: var(--title-txt-font)
         }
         /* This is a CSS comment */
         h1 {
@@ -47,49 +46,82 @@
             margin: 10px;
             }
         body { 
-        display: grid;
-        grid-template-areas: 
-            "header header header"
-            "nav article article"
-            "nav footer footer";
-        grid-template-rows: 80px 1fr 1000px;  
-        grid-template-columns: 320px 1fr;
-        grid-row-gap: 10px;
-        grid-column-gap: 10px;
-        height: 100vh;
-        margin: 0;
+            display: grid;
+            grid-template-areas: 
+                "header header header"
+                "nav article article"
+                "nav footer footer";
+            grid-template-rows: 80px 1fr 1000px;  
+            grid-template-columns: 320px 1fr;
+            grid-row-gap: 10px;
+            grid-column-gap: 10px;
+            height: 100vh;
+            margin: 0;
         }  
         header, footer, article, nav, div {
-        padding: 0.4em;
-        background: var(--main-bg-color);
-        font-size: 1em;
-        text-align: left;
-        color: var(--regular-txt-color);
-        font-family: var(--regular-txt-font);
+            padding: 0.4em;
+            background: var(--main-bg-color);
+            font-size: 1em;
+            text-align: left;
+            color: var(--regular-txt-color);
+            font-family: var(--regular-txt-font);
         }
         #pageHeader {
-        grid-area: header;
+            grid-area: header;
         }
         #pageFooter {
-        grid-area: footer;
+            grid-area: footer;
         }
         #mainArticle { 
-        grid-area: article;      
+            grid-area: article;      
         }
         #mainNav { 
-        grid-area: nav; 
+            grid-area: nav; 
         }
         /* Stack the layout on small devices/viewports. */
         @media all and (max-width: 575px) {
-        body { 
-            grid-template-areas: 
-            "header"
-            "article"
-            "nav"
-            "footer";
-            grid-template-rows: 80px 1fr 70px 1fr 70px;  
-            grid-template-columns: 1fr;
+            body { 
+                grid-template-areas: 
+                "header"
+                "article"
+                "nav"
+                "footer";
+                grid-template-rows: 80px 1fr 70px 1fr 70px;  
+                grid-template-columns: 1fr;
+            }
         }
+        .button {
+            border: none;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.5em;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: .2em;
+        }
+
+        .button1 {
+            background-color: var(--regular-txt-color);
+            color: var(--main-bg-color);
+            border: 2px solid var(--box-color);
+        }
+
+        .button1:hover {
+            background-color: var(--main-bg-color);
+            color: var(--regular-txt-color);
+        }
+
+        .button2 {
+            background-color: white;
+            color: black;
+            border: 2px solid #008CBA;
+        }
+
+        .button2:hover {
+            background-color: #008CBA;
+            color: white;
         }
     </style>
 </head>
@@ -105,15 +137,8 @@
         </div>
     </article>
     <nav id="mainNav">
-        <h1><p>Rate this image =></p></h1>
-        <h2>make sure this page is selected<br>then press 1, 2, 3 or 4</h2>
-        <ul>
-            <li><span id="special">&nbsp;1&nbsp;</span>= Best</li>
-            <li><span id="special">&nbsp;2&nbsp;</span>= Mid</li>
-            <li><span id="special">&nbsp;3&nbsp;</span>= Bad</li>
-            <li><span id="special">&nbsp;4&nbsp;</span>= Worst</li>
-          </ul>
+        {% block sidebar %}{% endblock %}
     </nav>
-    <footer id="pageFooter">TODO</footer>
+    <footer id="pageFooter">overwritten footer</footer>
 </body>
 </html>

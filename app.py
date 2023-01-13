@@ -19,6 +19,10 @@ app = Flask(__name__)
 def show_image():
     return render_template('image.html')
 
+@app.route('/analysis')
+def analysis():
+    return render_template('analysis.html')
+
 @app.route('/best')
 def move_pic_best():
     source = request.args['image']
