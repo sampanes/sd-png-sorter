@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <body>
+    <h1 id="page-header"></h1>
+    <img id="myimgid" src="" alt="My Image" style="max-width: 100%; height: auto;">
+  </body>
+  <script>
+    filename = ""
+    function getImage(){
+        fetch('/next')
+            .then(response => response.text())
+            .then(text => {
+                filename = text
+                document.getElementById("page-header").innerHTML = filename
+                fetch('/png_info?img_name=' + filename)
+                    .then(response => response.text())
+                    .then(text => {
+                        divtextcontent = text
+                        document.getElementById("pageFooter").innerHTML = divtextcontent
+                    })
+                document.querySelector("#myimgid").src = "/image?file=" + text 
+            })
+            .catch(error => console.error(error))
+    }
+    getImage()   
+    document.addEventListener('keypress', (e) => {
+        if(e.key == '1'){
+            fetch('/best?image=' + filename)
+                .then(response => response.text())
+                .then(text => console.error(text) )
+                .catch(error => console.error(error))
+            getImage()
+        }
+        else if(e.key == '2'){
+            fetch('/mid?image=' + filename)
+                .then(response => response.text())
+                .then(text => console.error(text) )
+                .catch(error => console.error(error))
+            getImage()
+        }  
+        else if(e.key == '3'){
+            fetch('/bad?image=' + filename)
+                .then(response => response.text())
+                .then(text =>console.error(text) )
+                .catch(error => console.error(error))
+            getImage()
+        }  
+        else if(e.key == '4'){
+            fetch('/worst?image=' + filename)
+                .then(response => response.text())
+                .then(text =>console.error(text) )
+                .catch(error => console.error(error))
+            getImage()
+        }
+        else if(e.key == 'Enter'){
+            getImage()
+        } 
+    }
+        )
+    </script>
+{% endblock %}

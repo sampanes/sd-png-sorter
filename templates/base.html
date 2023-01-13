@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %} Tab Title</title>
+    <style>
+        :root {
+            --main-bg-color: #2b2b2b;
+            --secondary-bg-color: #3d3d3d;
+
+            --title-txt-color: #d8d6d6;
+            --title-txt-font: "Tahoma";
+
+            --regular-txt-color: #b6b4b4;
+            --regular-txt-font: "Courier New";
+
+            --box-color: #3d9be7;
+        }
+        nav a {
+            color: var(--title-txt-color);
+            font-size: 2.2em;
+            text-decoration: none;
+            font-family: var(--title-txt-font)
+        }
+        /* This is a CSS comment */
+        h1 {
+            font-size: 1.5em;
+            text-align: left;
+            color: var(--regular-txt-color);
+            font-family: var(--regular-txt-font);
+            font-weight: bold;
+            }
+        h2 {
+            font-size: 1em;
+            text-align: left;
+            color: var(--regular-txt-color);
+            font-family: var(--regular-txt-font);
+            font-weight: normal;
+            }
+        li {
+            font-size: 1em;
+            text-align: left;
+            font-family: var(--regular-txt-font);
+        }
+        #special {
+            border: 2px solid var(--box-color);
+            margin: 10px;
+            }
+        body { 
+        display: grid;
+        grid-template-areas: 
+            "header header header"
+            "nav article article"
+            "nav footer footer";
+        grid-template-rows: 80px 1fr 1000px;  
+        grid-template-columns: 320px 1fr;
+        grid-row-gap: 10px;
+        grid-column-gap: 10px;
+        height: 100vh;
+        margin: 0;
+        }  
+        header, footer, article, nav, div {
+        padding: 0.4em;
+        background: var(--main-bg-color);
+        font-size: 1em;
+        text-align: left;
+        color: var(--regular-txt-color);
+        font-family: var(--regular-txt-font);
+        }
+        #pageHeader {
+        grid-area: header;
+        }
+        #pageFooter {
+        grid-area: footer;
+        }
+        #mainArticle { 
+        grid-area: article;      
+        }
+        #mainNav { 
+        grid-area: nav; 
+        }
+        /* Stack the layout on small devices/viewports. */
+        @media all and (max-width: 575px) {
+        body { 
+            grid-template-areas: 
+            "header"
+            "article"
+            "nav"
+            "footer";
+            grid-template-rows: 80px 1fr 70px 1fr 70px;  
+            grid-template-columns: 1fr;
+        }
+        }
+    </style>
+</head>
+<body style="background-color: var(--secondary-bg-color);">
+    <header id="pageHeader">
+        <nav>
+            <a>John's PNG sorter by Mikey and John</a>
+        </nav>
+    </header>
+    <article id="mainArticle">
+        <div class="content">
+            {% block content %} {% endblock %}
+        </div>
+    </article>
+    <nav id="mainNav">
+        <h1><p>Rate this image =></p></h1>
+        <h2>make sure this page is selected<br>then press 1, 2, 3 or 4</h2>
+        <ul>
+            <li><span id="special">&nbsp;1&nbsp;</span>= Best</li>
+            <li><span id="special">&nbsp;2&nbsp;</span>= Mid</li>
+            <li><span id="special">&nbsp;3&nbsp;</span>= Bad</li>
+            <li><span id="special">&nbsp;4&nbsp;</span>= Worst</li>
+          </ul>
+    </nav>
+    <footer id="pageFooter">TODO</footer>
+</body>
+</html>
