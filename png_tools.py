@@ -11,6 +11,9 @@ def get_binary_png_info(my_png):
         while b"tEXt" not in t[0]:
             t=next(g)
 
+        if b"tEXt" not in t[0]:
+            return False, False, False
+            
         ret = t[1]
         lines = ret.split(b'\n')
 

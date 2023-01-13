@@ -8,7 +8,7 @@ from png_tools import *
 #   no need to replace \ with \\ in raw strings
 SOURCE_DIR = r""
 if SOURCE_DIR == "":
-    print("Add Source Directory in app.py\ncan copy paste directory into SOURCE_DIR raw string, C:\\Users\\foo\\bar")
+    print("Add Source Directory in app.py\ncan copy paste directory into SOURCE_DIR raw string, i.e.:\nSOURCE_DIR = r\"C:\\Users\\foo\\bar\"")
     exit(1)
 #
 #####################
@@ -52,8 +52,6 @@ def next_image():
 def png_info():
     img = request.args['img_name']
     pretty = png_print(SOURCE_DIR+"\\"+img)
-    print("tried to get info on\n"+SOURCE_DIR+"\\"+img)
-    print(pretty)
     return pretty
 
 @app.route('/image')
