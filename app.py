@@ -2,11 +2,13 @@ from flask import Flask, render_template, request, send_file
 import subprocess
 import os, random
 from png_tools import *
+from png_analysis import get_dict_of_dicts
 
 #####################
 #   Source Directory!
 #   no need to replace \ with \\ in raw strings
 SOURCE_DIR = r""
+SOURCE_DIR = r"C:\Users\John\Documents\SD\stable-diffusion-webui\outputs\txt2img-images"
 if SOURCE_DIR == "":
     print("Add Source Directory in app.py\ncan copy paste directory into SOURCE_DIR raw string, i.e.:\nSOURCE_DIR = r\"C:\\Users\\foo\\bar\"")
     exit(1)
@@ -21,7 +23,8 @@ def show_image():
 
 @app.route('/analysis')
 def analysis():
-    return render_template('analysis.html')
+    dict_of_dicts = get_dict_of_dicts("staticimg")
+    return render_template('analysis.html', data=dict_of_dicts)
 
 @app.route('/best')
 def move_pic_best():

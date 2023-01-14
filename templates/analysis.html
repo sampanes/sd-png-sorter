@@ -3,9 +3,25 @@
 {% block title %}PNG Sorter{% endblock %}
 
 {% block sidebar %}
-<h1><p>HEADER</p></h1>
-<h2>TODO<br>f in the chat<br>add "dynamic" links? one for each CKPT<br></h2>
-
+<h1><p>Ckpts analyzed:</p></h1>
+<h2>TODO<br>f in the chat<br>these are "dynamic" links? one for each CKPT aka hash<br>click one to see what the searchyboi found<br></h2>
+{% for key, value in data.items() %}
+<li>
+    <button onclick="updatePageFooter({{ value }});" class="button button2">{{ key }}</button>
+</li>
+{% endfor %}
+<script>    
+    window.onload = function() {
+        document.getElementById('pageFooter').innerHTML = "This footer will become a dump of data based on the hash you click";
+    };
+    function updatePageFooter(data){
+        var element = document.getElementById('pageFooter');
+        element.innerHTML = "<p>This is just the poorly designed dictionary of a single hash (ckpt) dumped for now</p>"
+        for (const key in data){
+            element.innerHTML += "<p>" + key + " : " + data[key] + "</p>"
+            }
+    }
+</script>
 <br><br><br><br><br>
 <a href="{{ url_for('show_image') }}" class="button button1">Back to Sort</a>
 

@@ -9,3 +9,10 @@ You may also press enter to skip
 Once sorted, there are insights to be had regarding the best prompts, worst settings, and so on, for any given ckpt
 
 The insights part is not yet implimented but has been started elsewhere
+
+in cmd:
+> pip install -r requirements.txt
+> flask --debug run --host=0.0.0.0
+
+--debug allows your changes in code to be registered whenever you refresh the page, no need to ctrl+c and start over
+--host=0.0.0.0 will make the app available all over your network, so you can sort images on a laptop in a different room than your main SD machine
