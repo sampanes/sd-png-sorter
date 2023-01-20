@@ -8,7 +8,6 @@ from png_analysis import get_dict_of_dicts
 #   Source Directory!
 #   no need to replace \ with \\ in raw strings
 SOURCE_DIR = r""
-SOURCE_DIR = r"C:\Users\John\Documents\SD\stable-diffusion-webui\outputs\txt2img-images"
 if SOURCE_DIR == "":
     print("Add Source Directory in app.py\ncan copy paste directory into SOURCE_DIR raw string, i.e.:\nSOURCE_DIR = r\"C:\\Users\\foo\\bar\"")
     exit(1)
