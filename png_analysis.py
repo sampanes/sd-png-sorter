@@ -1,13 +1,7 @@
 from os_tools import *
 from png_tools import *
+from user_constants import rank_dict
 
-#this is in a file called hash_object and may return there if thats a viable way of doing this stuff
-rank_dict = {
-    "\\1best"     : 3,
-    "\\2mid"      : 2,
-    "\\3bad"      : -2,
-    "\\4worst"    : -3
-}
 dict_keys = ["Prompts","Negative Prompts","Settings"]
 
 def get_dict_of_dicts(MY_ROOT):

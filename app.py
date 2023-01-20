@@ -3,16 +3,8 @@ import subprocess
 import os, random
 from png_tools import *
 from png_analysis import get_dict_of_dicts
-
-#####################
-#   Source Directory!
-#   no need to replace \ with \\ in raw strings
-SOURCE_DIR = r""
-if SOURCE_DIR == "":
-    print("Add Source Directory in app.py\ncan copy paste directory into SOURCE_DIR raw string, i.e.:\nSOURCE_DIR = r\"C:\\Users\\foo\\bar\"")
-    exit(1)
-#
-#####################
+from user_constants import SOURCE_DIR
+from user_constants import rank_dirs
 
 app = Flask(__name__)
 
@@ -28,25 +20,25 @@ def analysis():
 @app.route('/best')
 def move_pic_best():
     source = request.args['image']
-    res = subprocess.call(f"move \"{SOURCE_DIR}\\{source}\" staticimg\\1best", shell = True)
+    res = subprocess.call(f"move \"{SOURCE_DIR}\\{source}\" staticimg{rank_dirs[0]}", shell = True)
     return "True"
 
 @app.route('/mid')
 def move_pic_mid():
     source = request.args['image']
-    res = subprocess.call(f"move \"{SOURCE_DIR}\\{source}\" staticimg\\2mid", shell = True)
+    res = subprocess.call(f"move \"{SOURCE_DIR}\\{source}\" staticimg{rank_dirs[1]}", shell = True)
     return "True"
 
 @app.route('/bad')
 def move_pic_bad():
     source = request.args['image']
-    res = subprocess.call(f"move \"{SOURCE_DIR}\\{source}\" staticimg\\3bad", shell = True)
+    res = subprocess.call(f"move \"{SOURCE_DIR}\\{source}\" staticimg{rank_dirs[2]}", shell = True)
     return "True"
 
 @app.route('/worst')
 def move_pic_worst():
     source = request.args['image']
-    res = subprocess.call(f"move \"{SOURCE_DIR}\\{source}\" staticimg\\4worst", shell = True)
+    res = subprocess.call(f"move \"{SOURCE_DIR}\\{source}\" staticimg{rank_dirs[3]}", shell = True)
     return "True"
 
 @app.route('/next')
