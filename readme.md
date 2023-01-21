@@ -12,12 +12,14 @@ we'll see if things blow up
 How it works is it shows you a random image from the directory and lets you rate it from 1 to 4 (1 is best 4 is worst)
 
 You may also press enter to skip
+Press backspace to revert a change, this can undo a history of recent file moves, up to MAX_last_mv_len which is defined in user_constants.py
 
 Once sorted, there are insights to be had regarding the best prompts, worst settings, and so on, for any given ckpt
 
 The insights part is not yet implimented but has been started elsewhere
 
 in cmd:
+> .venv\Scripts\activate.bat
 > pip install -r requirements.txt
 > flask --debug run --host=0.0.0.0
 
@@ -28,6 +30,7 @@ in cmd:
 (as a note
 we want d_of_d to have prompts, neg prompts, and settings ranked from high to low
 dictionary of dictionaries is currently formatted as follows (no ranks present)
+```
 d_of_d =
 	{
 		"123hash":
@@ -65,4 +68,5 @@ d_of_d =
 					]
 			}
 	}
+```
 )
