@@ -67,9 +67,9 @@ def undo_move():
         moved_image, accidental_destination = last_mv_tuple.pop()
         print(f"move \"{accidental_destination}\\{moved_image}\" \"{SOURCE_DIR}\"")
         res = subprocess.call(f"move \"{accidental_destination}\\{moved_image}\" \"{SOURCE_DIR}\"", shell = True)
-        return f"moved last img from \"{accidental_destination}\" back to \"{SOURCE_DIR}\""
+        return str(len(last_mv_tuple))+f": moved last img from \"{accidental_destination}\" back to \"{SOURCE_DIR}\""
     else:
-        return "False"
+        return "No more history to undo, back button does nothing now"
 
 @app.route('/png_info')
 def png_info():
