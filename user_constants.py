@@ -24,3 +24,12 @@ rank_dict = {
     rank_dirs[2]    : -2,
     rank_dirs[3]    : -3
 }
+#
+#####################
+
+#####################
+# this is for tracking the last x number of move commands, so you can undo them
+last_mv_tuple = []
+MAX_last_mv_len = 25
+#
+#####################

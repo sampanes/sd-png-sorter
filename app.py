@@ -5,9 +5,8 @@ from png_tools import *
 from png_analysis import get_dict_of_dicts
 from user_constants import SOURCE_DIR
 from user_constants import rank_dirs
-
-last_mv_tuple = []
-MAX_last_mv_len = 25
+from user_constants import last_mv_tuple
+from user_constants import MAX_last_mv_len
 
 app = Flask(__name__)
 
