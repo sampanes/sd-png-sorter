@@ -15,6 +15,8 @@
             --regular-txt-font: "Courier New";
 
             --box-color: #3d9be7;
+
+            --button-two-red: #5a0c0c;
         }
         nav a {
             color: var(--title-txt-color);
@@ -119,20 +121,27 @@
             margin: 2px 1px;
             background-color: rgb(109, 52, 52);
             color: white;
-            border: 2px solid #5a0c0c;
+            border: 2px solid var(--button-two-red);
             border-radius: .4em;
         }
 
         .button2:hover {
             background-color: white;
-            color: #5a0c0c;
+            color: var(--button-two-red);
         }
 
         .selected {
-            border: 2px dashed #5a0c0c;
+            border: 2px dashed var(--button-two-red);
             border-radius: 8px;
             background-color: rgb(184, 132, 132);
-            color: #5a0c0c;
+            color: var(--button-two-red);
+        }
+        #last_action_msg {
+            width: 280px;
+            padding: 10px;
+            font-size: 80%;
+            border: 2px solid var(--secondary-bg-color);
+            word-wrap: anywhere;
         }
     </style>
 </head>

@@ -13,6 +13,8 @@
           </ul>
 <br><br><br><br><br>
 <a class="button button1" href="{{ url_for('analysis') }}" class="button button1">Analysis</a>
+<br><br><br><br><br>
+<div id="last_action_msg"></div>
 {% endblock %}
 
 {% block content %}
@@ -39,38 +41,56 @@
             .catch(error => console.error(error))
     }
     getImage()   
-    document.addEventListener('keypress', (e) => {
+    document.addEventListener('keydown', (e) => {
         if(e.key == '1'){
             fetch('/best?image=' + filename)
                 .then(response => response.text())
-                .then(text => console.error(text) )
+                .then(text => {
+                    document.getElementById("last_action_msg").innerHTML = text;
+                })
                 .catch(error => console.error(error))
             getImage()
         }
         else if(e.key == '2'){
             fetch('/mid?image=' + filename)
                 .then(response => response.text())
-                .then(text => console.error(text) )
+                .then(text => {
+                    document.getElementById("last_action_msg").innerHTML = text;
+                })
                 .catch(error => console.error(error))
             getImage()
         }  
         else if(e.key == '3'){
             fetch('/bad?image=' + filename)
                 .then(response => response.text())
-                .then(text =>console.error(text) )
+                .then(text => {
+                    document.getElementById("last_action_msg").innerHTML = text;
+                })
                 .catch(error => console.error(error))
             getImage()
         }  
         else if(e.key == '4'){
             fetch('/worst?image=' + filename)
                 .then(response => response.text())
-                .then(text =>console.error(text) )
+                .then(text => {
+                    document.getElementById("last_action_msg").innerHTML = text;
+                })
                 .catch(error => console.error(error))
             getImage()
         }
         else if(e.key == 'Enter'){
             getImage()
-        } 
+            document.getElementById("last_action_msg").innerHTML = "skipped"
+        }
+        else if(e.key === 'Backspace' || e.keyCode === 8){
+            e.preventDefault();
+            fetch('/undo')
+                .then(response => response.text())
+                .then(text => {
+                    document.getElementById("last_action_msg").innerHTML = text;
+                })
+                .catch(error => console.error(error))
+        }
     }
         )
     </script>

@@ -1,6 +1,8 @@
 from os_tools import *
 from png_tools import *
+import nltk
 from user_constants import rank_dict
+from nltk.collocations import BigramAssocMeasures, BigramCollocationFinder
 
 dict_keys = ["Prompts","Negative Prompts","Settings"]
 
@@ -31,6 +33,9 @@ def get_dict_of_dicts(MY_ROOT):
             print("dir error:\nMY_ROOT {}\ndir_stripped\t{}\ndir\t{}".format(MY_ROOT,dir_stripped,dir))
             
     return d_of_d
+
+def gpt_get_collocations_and_ratings(d_of_d):
+    return False
 
 def generate_hash_dict(MY_ROOT):
     for dir in get_list_of_dirs(MY_ROOT):
