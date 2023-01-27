@@ -23,11 +23,15 @@ def get_dict_of_dicts(MY_ROOT):
                         d_of_d[settings_dict['Model hash']][dict_keys[2]].append(settings)
                     else:
                         temp_dict = {
+                            "rating":0,
+                            "count":0,
                             dict_keys[0]:[prompts],
                             dict_keys[1]:[neg_prompts],
                             dict_keys[2]:[settings]
                             }
                         d_of_d[settings_dict['Model hash']] = temp_dict.copy()
+                d_of_d[settings_dict['Model hash']]["rating"]+=rank_dict[dir_stripped]
+                d_of_d[settings_dict['Model hash']]["count"]+=1
 
         else:
             print("dir error:\nMY_ROOT {}\ndir_stripped\t{}\ndir\t{}".format(MY_ROOT,dir_stripped,dir))

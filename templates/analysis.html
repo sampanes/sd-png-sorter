@@ -7,7 +7,7 @@
 <h2>TODO<br>f in the chat<br>these are "dynamic" links? one for each CKPT aka hash<br>click one to see what the searchyboi found<br></h2>
 {% for key, value in dict_of_dicts.items() %}
 <li>
-    <button onclick="updatePageFooter({{ value }});" class="button2" id="{{ loop.index }}">{{ key }}</button>
+    <button onclick="updatePageFooter({{ value }});" class="button2" id="{{ loop.index }}">{{ key }} : {{ value["rating"] }}</button>
 </li>
 {% endfor %}
 <script>

@@ -54,7 +54,7 @@ def move_pic_worst():
 
 @app.route('/next')
 def next_image():
-    value = random.choice([f for f in os.listdir(SOURCE_DIR) if os.path.isfile(os.path.join(SOURCE_DIR, f))])
+    value = random.choice([f for f in os.listdir(SOURCE_DIR) if f.endswith('.png') and os.path.isfile(os.path.join(SOURCE_DIR, f))])
     return value
 
 @app.route('/undo')

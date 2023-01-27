@@ -11,10 +11,51 @@
             <li><span id="special">&nbsp;3&nbsp;</span>= Bad</li>
             <li><span id="special">&nbsp;4&nbsp;</span>= Worst</li>
           </ul>
-<br><br><br><br><br>
+<br><br><br>
 <a class="button button1" href="{{ url_for('analysis') }}" class="button button1">Analysis</a>
 <br><br><br><br><br>
 <div id="last_action_msg"></div>
+<div id="keyboard_btns"></div>
+<script>
+const buttonContainer = document.getElementById("keyboard_btns");
+
+const buttonData = [
+    { label: "___1___", endpoint: "/best" },
+    { label: "___2___", endpoint: "/mid" },
+    { label: "___3___", endpoint: "/bad" },
+    { label: "___4___", endpoint: "/worst" }
+];
+
+for (const button of buttonData) {
+    const newButton = document.createElement("button");
+    newButton.innerHTML = button.label;
+    newButton.className = "button3";
+    newButton.addEventListener("click", () => {
+        fetch(button.endpoint + '?image=' + filename)
+            .then(response => response.text())
+            .then(text => {
+                document.getElementById("last_action_msg").innerHTML = text;
+            })
+            .catch(error => console.error(error))
+        getImage()
+    });
+    buttonContainer.appendChild(newButton);
+}
+
+const backButton = document.createElement("button");
+backButton.innerHTML = "<====";
+backButton.className = "button3";
+backButton.addEventListener("click", () => {
+    fetch('/undo')
+        .then(response => response.text())
+        .then(text => {
+            document.getElementById("last_action_msg").innerHTML = text;
+        })
+        .catch(error => console.error(error))
+});
+buttonContainer.appendChild(backButton);
+
+</script>
 {% endblock %}
 
 {% block content %}
